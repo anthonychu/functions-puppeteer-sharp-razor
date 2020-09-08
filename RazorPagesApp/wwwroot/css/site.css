@@ -71,5 +71,9 @@ body {
 }
 
 div.container {
-  margin-top: 24px;
+  margin-top: 64px;
+}
+
+h1 {
+  margin: 24px;
 }

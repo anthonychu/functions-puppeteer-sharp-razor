@@ -32,9 +32,9 @@
                         <tr>
                             <td>@item.ProductId</td>
                             <td>@item.Name</td>
-                            <td>@item.UnitPrice.ToString("C")</td>
+                            <td>@item.UnitPrice.ToString("F")</td>
                             <td>@item.Quantity</td>
-                            <td>@((item.UnitPrice * item.Quantity).ToString("C"))</td>
+                            <td>@((item.UnitPrice * item.Quantity).ToString("F"))</td>
                         </tr>
                     }
                     <tr>
@@ -45,7 +45,7 @@
                         <td><b>@(Model.Items
                                 .Select(i => i.UnitPrice * i.Quantity)
                                 .Sum()
-                                .ToString("C"))</b></td>
+                                .ToString("F"))</b></td>
                     </tr>
                 </tbody>
             </table>
