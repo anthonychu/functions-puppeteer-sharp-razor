@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+
+<div class="text-center">
+    <h1 class="display-4">Invoice</h1>
+
+    @if (Model.Items == null)
+    {
+        <div>
+            <form id="invoice-form" method="post">
+                <textarea name="items" id="items-box"></textarea>
+                <input type="submit" id="submit-button" value="Submit" />
+            </form>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Item #</td>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Line Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@item.ProductId</td>
+                            <td>@item.Name</td>
+                            <td>@item.UnitPrice.ToString("C")</td>
+                            <td>@item.Quantity</td>
+                            <td>@((item.UnitPrice * item.Quantity).ToString("C"))</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b>@(Model.Items
+                                .Select(i => i.UnitPrice * i.Quantity)
+                                .Sum()
+                                .ToString("C"))</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
