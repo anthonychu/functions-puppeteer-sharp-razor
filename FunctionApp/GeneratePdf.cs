@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using PuppeteerSharp;
 using System.Linq;
+using PuppeteerSharp.Input;
 
 namespace Company.Function
 {
@@ -37,7 +38,9 @@ namespace Company.Function
 
             string data = GetData();
             await page.TypeAsync("#items-box", data);
-            await page.ClickAsync("#submit-button");
+            await Task.WhenAll(
+                page.WaitForNavigationAsync(), 
+                page.ClickAsync("#submit-button"));
             var stream = await page.PdfStreamAsync();
             await browser.CloseAsync();
 
