@@ -77,3 +77,16 @@ div.container {
 h1 {
   margin: 24px;
 }
+
+div.logo {
+  margin-top: 64px;
+  margin-bottom: 48px;
+}
+
+img.logo {
+  height: 84px;
+}
+
+thead {
+  font-weight: bold;
+}

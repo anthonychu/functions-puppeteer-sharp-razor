@@ -2,53 +2,53 @@
 @model IndexModel
 
 <div class="text-center">
-    <h1 class="display-4">Invoice</h1>
+  @* <h1 class="display-4"><img class="logo" src="img/functions.svg" /> Invoice</h1> *@
 
-    @if (Model.Items == null)
-    {
-        <div>
-            <form id="invoice-form" method="post">
-                <textarea name="items" id="items-box"></textarea>
-                <input type="submit" id="submit-button" value="Submit" />
-            </form>
-        </div>
-    }
-    else
-    {
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Item #</td>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
-                        <td>Line Total</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var item in Model.Items)
-                    {
-                        <tr>
-                            <td>@item.ProductId</td>
-                            <td>@item.Name</td>
-                            <td>@item.UnitPrice.ToString("F2")</td>
-                            <td>@item.Quantity</td>
-                            <td>@((item.UnitPrice * item.Quantity).ToString("F2"))</td>
-                        </tr>
-                    }
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><b>@(Model.Items
-                                .Select(i => i.UnitPrice * i.Quantity)
-                                .Sum()
-                                .ToString("F2"))</b></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    }
+  <div class="logo">
+    <img class="logo" src="img/ttlogo.png" />
+  </div>
+  @if (Model.Items == null)
+  {
+    <div>
+      <form id="invoice-form" method="post">
+        <textarea name="items" id="items-box"></textarea>
+        <input type="submit" id="submit-button" value="Submit" />
+      </form>
+    </div>
+  }
+  else
+  {
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Item #</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Line Total</td>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach(var item in Model.Items)
+          {
+            <tr>
+              <td>@item.ProductId</td>
+              <td>@item.Name</td>
+              <td>@item.UnitPrice.ToString("F2")</td>
+              <td>@item.Quantity</td>
+              <td>@((item.UnitPrice * item.Quantity).ToString("F2"))</td>
+            </tr>
+          }
+          <tr>
+            <td colspan="4"></td>
+            <td><b>@(Model.Items
+                    .Select(i => i.UnitPrice * i.Quantity)
+                    .Sum()
+                    .ToString("F2"))</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  }
 </div>

@@ -51,7 +51,7 @@ namespace Company.Function
         {
             var fakeProducts = new Bogus.DataSets.Commerce();
             var rand = new Random();
-            var data = Enumerable.Range(0, 15)
+            var data = Enumerable.Range(0, 10)
                 .Select(_ => new {
                     productId = fakeProducts.Ean13(),
                     name = fakeProducts.ProductName(),
